@@ -1,0 +1,38 @@
+<config xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'>
+        <!--xmlns='http://www.ehcache.org/v3'-->
+
+    <cache alias="employeesCache">
+        <expiry>
+            <ttl unit="seconds">3600</ttl>
+        </expiry>
+        <heap unit="entries">1000</heap>
+    </cache>
+
+    <cache alias="employeesWithoutProjectsCache">
+        <expiry>
+            <ttl unit="seconds">3600</ttl>
+        </expiry>
+        <heap unit="entries">1000</heap>
+    </cache>
+
+    <cache alias="employeesByDepartmentCache">
+        <expiry>
+            <ttl unit="seconds">3600</ttl>
+        </expiry>
+        <heap unit="entries">1000</heap>
+    </cache>
+
+    <cache alias="employeesByProjectCache">
+        <expiry>
+            <ttl unit="seconds">3600</ttl>
+        </expiry>
+        <heap unit="entries">1000</heap>
+    </cache>
+
+    <cache alias="departmentCache">
+        <expiry>
+            <ttl unit="seconds">3600</ttl>
+        </expiry>
+        <heap unit="entries">1000</heap>
+    </cache>
+</config>

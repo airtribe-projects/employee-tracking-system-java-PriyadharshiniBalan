@@ -1,0 +1,174 @@
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+EMPLOYEE
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Add Employee : DONE
+-------------------
+curl -X POST "http://localhost:8080/employees" -d "{\"name\":null,\"designation\":null,\"email\":null}" -H "Content-Type: application/json" -vvv
+
+curl -X POST "http://localhost:8080/employees" -d "{\"name\":\"Srinivasan Amarnathan\",\"designation\":\"Manager\",\"email\":\"srini.a@gmail.com\", \"password\":\"pass123\"}" -H "Content-Type: application/json" -vvv
+
+curl -X POST "http://localhost:8080/employees" -d "{\"name\":\"Priyadharshini B\",\"designation\":\"Employee\",\"email\":\"priya.a@gmail.com\", \"departmentName\":\"Cascade\", \"password\":\"pass123\"}" -H "Content-Type: application/json" -vvv
+
+
+Get All Employee : DONE
+-----------------------
+curl -X GET "http://localhost:8080/employees" -H "Content-Type: application/json" -vvv
+
+curl -X GET "http://localhost:8080/employees/1" -H "Content-Type: application/json" -vvv
+
+
+SEARCH based on criteria : DONE
+-------------------------------
+
+curl -X GET "http://localhost:8080/employees/search/email/srini.a@gmail.com" -H "Content-Type: application/json" -vvv
+
+curl -X GET "http://localhost:8080/employees/search/name/Priyadharshini%20B" -H "Content-Type: application/json" -vvv
+
+curl -X GET "http://localhost:8080/employees/search/designation/Manager" -H "Content-Type: application/json" -vvv
+
+curl -X GET "http://localhost:8080/employees/search/department/Cascade" -H "Content-Type: application/json" -vvv
+
+curl -X GET "http://localhost:8080/employees/noProjects" -H "Content-Type: application/json" -vvv
+
+
+Update Employee : DONE
+-----------------------
+curl -X PUT "http://localhost:8080/employees/1" -d "{\"name\":null,\"designation\":null,\"email\":null, \"password\":null}" -H "Content-Type: application/json" -vvv
+
+curl -X PUT "http://localhost:8080/employees/1" -d "{\"name\":\"Kavin Franco\",\"designation\":\"Manager\",\"email\":\"kavin.f@gmail.com\",\"password\":\"passApollo\"}" -H "Content-Type: application/json" -vvv
+
+curl -X PATCH "http://localhost:8080/employees/1/srinivasan.a@gmail.com" -H "Content-Type: application/json" -vvv
+
+curl -X PATCH "http://localhost:8080/employees/srini.a@gmail.com?name=Srinivasan%20Amarnathan" -H "Content-Type: application/json" -vvv
+
+curl -X PATCH "http://localhost:8080/employees/srini.a@gmail.com?designation=Manager" -H "Content-Type: application/json" -vvv
+
+curl -X PATCH "http://localhost:8080/employees/srini.a@gmail.com?password=test123" -H "Content-Type: application/json" -vvv
+
+curl -X PATCH "http://localhost:8080/employees/srini.a@gmail.com/department/Cascade" -H "Content-Type: application/json" -vvv
+
+
+Delete EMPLOYEE : DONE
+----------------
+curl -X DELETE "http://localhost:8080/employees/1" -H "Content-Type: application/json" -vvv
+
+curl -X DELETE "http://localhost:8080/employees/email/mathu.a@gmail.com" -H "Content-Type: application/json" -vvv
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+DEPARTMENT
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Add department : POST : DONE
+----------------------
+curl -X POST "http://localhost:8080/departments" -d "{\"name\":null,\"description\":null,\"managerEmail\":null}" -H "Content-Type: application/json" -vvv
+
+curl -X POST "http://localhost:8080/departments" -d "{\"name\":\"Cascade\",\"description\":\"Manages Assets\",\"location\":\"DLF 1-A\", \"managerEmail\":\"srini.a@gmail.com\"}" -H "Content-Type: application/json" -vvv
+
+
+Get department : Get : DONE
+---------------------------
+curl -X GET "http://localhost:8080/departments" -H "Content-Type: application/json" -vvv
+
+curl -X GET "http://localhost:8080/departments/1" -H "Content-Type: application/json" -vvv
+
+curl -X GET "http://localhost:8080/departments/Cascade/employees" -H "Content-Type: application/json" -vvv
+
+curl -X GET "http://localhost:8080/departments/Cascade/projects" -H "Content-Type: application/json" -vvv
+
+curl -X GET "http://localhost:8080/departments/Cascade/projectBudget" -H "Content-Type: application/json" -vvv
+
+
+SEARCH based on criteria : DONE
+-------------------------------
+
+curl -X GET "http://localhost:8080/departments/search/name/Cascade" -H "Content-Type: application/json" -vvv
+
+curl -X GET "http://localhost:8080/departments/search/manager/srini.a@gmail.com" -H "Content-Type: application/json" -vvv
+
+curl -X GET "http://localhost:8080/departments/search/location/DLF%201-A" -H "Content-Type: application/json" -vvv
+
+
+Update department : PUT : DONE
+-------------------------------
+curl -X PUT "http://localhost:8080/departments/1" -d "{\"name\":null,\"description\":null,\"managerEmail\":null}" -H "Content-Type: application/json" -vvv
+
+curl -X PUT "http://localhost:8080/departments/1" -d "{\"name\":\"Xome\",\"description\":\"UI Web Application\",\"location\":\"DLF 1-A\", \"managerEmail\":\"wazid.a@gmail.com\"}" -H "Content-Type: application/json" -vvv
+
+curl -X PATCH "http://localhost:8080/departments/3/Xome" -H "Content-Type: application/json" -vvv
+
+curl -X PATCH "http://localhost:8080/departments/Cascade?description=Manages%20Property" -H "Content-Type: application/json" -vvv
+
+curl -X PATCH "http://localhost:8080/departments/Cascade?location=test123" -H "Content-Type: application/json" -vvv
+
+curl -X PATCH "http://localhost:8080/departments/Cascade/manager/kavin.a@gmail.com" -H "Content-Type: application/json" -vvv
+
+Delete Department : DELETE : DONE
+---------------------------------
+curl -X DELETE "http://localhost:8080/departments/1" -H "Content-Type: application/json" -vvv
+
+curl -X DELETE "http://localhost:8080/departments/name/Cascade" -H "Content-Type: application/json" -vvv
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+PROJECTS
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Add Project : POST : DONE
+-------------------------
+curl -X POST "http://localhost:8080/projects" -d "{\"name\":null,\"description\":null,\"budget\":null,\"leadEmail\":null,\"departmentName\":null}" -H "Content-Type: application/json" -vvv
+
+curl -X POST "http://localhost:8080/projects" -d "{\"name\":\"Seller Self Service\",\"description\":\"Seller Self Service\",\"budget\":2000000,\"leadEmail\":\"mathu.a@gmail.com\",\"departmentName\":\"Cascade\"}" -H "Content-Type: application/json" -vvv
+
+curl -X POST "http://localhost:8080/projects/1/employees/2,3" -H "Content-Type: application/json" -vvv
+
+
+Get Project : Get : DONE
+------------------------
+curl -X GET "http://localhost:8080/projects" -H "Content-Type: application/json" -vvv
+
+curl -X GET "http://localhost:8080/projects/1" -H "Content-Type: application/json" -vvv
+
+curl -X GET "http://localhost:8080/projects/Seller%20Self%20Service/employees" -H "Content-Type: application/json" -vvv
+
+curl -X GET "http://localhost:8080/projects/Seller%20Self%20Service/departments" -H "Content-Type: application/json" -vvv
+
+
+SEARCH based on criteria : DONE
+--------------------------------
+curl -X GET "http://localhost:8080/projects/search/name/Seller%20Self%20Service" -H "Content-Type: application/json" -vvv
+
+curl -X GET "http://localhost:8080/projects/search/lead/mathu.a@gmail.com" -H "Content-Type: application/json" -vvv
+
+
+Update Project : PUT : DONE
+-----------------------
+curl -X PUT "http://localhost:8080/projects/1" -d "{\"name\":null,\"description\":null,\"budget\":null,\"leadEmail\":null,\"departmentName\":null}" -H "Content-Type: application/json" -vvv
+
+curl -X PUT "http://localhost:8080/projects/1" -d "{\"name\":\"MBA\",\"description\":\"Multi State Agent\",\"budget\":2000000,\"leadEmail\":\"priya.a@gmail.com\",\"departmentName\":\"Cascade\"}" -H "Content-Type: application/json" -vvv
+
+curl -X PATCH "http://localhost:8080/projects/1/Multi%20State%20Agent" -H "Content-Type: application/json" -vvv
+
+curl -X PATCH "http://localhost:8080/projects/Multi%20State%20Agent?description=License%20In%20Multi%20State" -H "Content-Type: application/json" -vvv
+
+curl -X PATCH "http://localhost:8080/projects/Multi%20State%20Agent?budget=500000" -H "Content-Type: application/json" -vvv
+
+curl -X PATCH "http://localhost:8080/projects/Multi%20State%20Agent/lead/mathu.a@gmail.com" -H "Content-Type: application/json" -vvv
+
+curl -X PATCH "http://localhost:8080/projects/MBA/department/Apollo" -H "Content-Type: application/json" -vvv
+
+
+Delete Poject : DELETE : DONE
+-----------------------------
+curl -X DELETE "http://localhost:8080/projects/1/employees/2,3" -H "Content-Type: application/json" -vvv
+
+curl -X DELETE "http://localhost:8080/projects/1" -H "Content-Type: application/json" -vvv
+
+curl -X DELETE "http://localhost:8080/departments/name/Cascade" -H "Content-Type: application/json" -vvv
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+DB:
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+SELECT * FROM DEPARTMENT ;
+SELECT * FROM EMPLOYEE ;
+SELECT * FROM PROJECT ;
+SELECT * FROM EMPLOYEE_PROJECTS ;
